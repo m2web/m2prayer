@@ -1,7 +1,10 @@
+Meteor.subscribe('todaysVerse');
+
+todaysVerse = new Meteor.Collection('todaysVerse');
+
 Template.todaysVerse.helpers({
   theVerse: function() {
-	var esv = new ESV();
-	return esv.getTodaysVerse();
+	return this.todaysVerse;
   }
 });
 
