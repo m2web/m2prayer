@@ -6,6 +6,6 @@ Meteor.publish('todaysVerse', function() {
 */
 
 Meteor.publish('memoryVerses', function() {
-	console.log(jm_verses);
+	console.log(this.jm_verses);
 	return jm_verses.find();
 });
