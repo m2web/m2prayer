@@ -17,12 +17,17 @@ ESV.prototype.getTodaysVerse = function(){
 
 ESV.prototype.httpGet = function(theUrl)
 {	
+	/*
 	var xmlHttp = null;
-	
 	xmlHttp = new XMLHttpRequest();
 	xmlHttp.open( "GET", theUrl, false );
 	xmlHttp.send( null );
 	return xmlHttp.responseText;
+	*/
+	
+	console.log(Meteor.http.get(theUrl));
+	
+	return "God is good!";
 }
 
 ESV.prototype.getVerseOptions = function(){
