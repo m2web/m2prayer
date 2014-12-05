@@ -17,8 +17,6 @@ ESV.prototype.getTodaysVerse = function(){
 
 ESV.prototype.httpGet = function(theUrl)
 {	
-	//console.log(Meteor.http.get(theUrl));
-	
 	return Meteor.http.get(theUrl);
 }
 

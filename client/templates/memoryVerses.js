@@ -8,6 +8,6 @@ Template.memoryVerses.helpers({
 	//this is from the jm_verses (Joshua's Men) collection
 	//return memoryVerses.find({'year': theYear, 'month': {$gte: 0, $lte: lastMonth}});
 	//console.log(memoryVerses);
-	return memoryVerses.find();
+	return MemoryVerses.find({});
   }
 });
