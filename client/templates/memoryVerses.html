@@ -1,5 +1,13 @@
 <template name="memoryVerses">
+<table>
 	{{#each memoryVerses}}
-		the verse
+	<tr><td>
+		<div>
+			<div>{{reference}}</div>
+			<div>{{text}}</div>
+		</div>
+		<div>&nbsp;</div>
+	</td></tr>
 	{{/each}}
+</table>
 </template>
