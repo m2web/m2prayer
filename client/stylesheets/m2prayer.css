@@ -10,6 +10,14 @@ tr:nth-child(odd){
 	background-color: LightGray;
 }
 
+.prayerTimer {
+		font-size: 16px;
+}
+
+#time {
+		 display: none;
+}
+
 /*Link Styling*/
 a:link{
 	color:black;
@@ -27,6 +35,11 @@ a:visited{
 }
 
 a:active{
+	color:black;
+	text-decoration: none;
+}
+
+a:hover.headerTitle{
 	color:black;
 	text-decoration: none;
 }

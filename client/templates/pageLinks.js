@@ -24,7 +24,7 @@ Template.pageLinks.helpers({
 			todaysVOVPrayerNumber = todaysVOVPrayerNumber - numberOfPrayers;
 		//if today's number is greater than twice the number of prayers get a random number of a prayer
 		}else if(todaysVOVPrayerNumber > numberOfPrayersX2) {
-			todaysVOVPrayerNumber = Math.floor(Math.random() * (numberOfPrayers - 1) )+ 1;
+			todaysVOVPrayerNumber = Math.floor(Math.random() * (numberOfPrayers - 1 + 1) )+ 1;
 		}
 		//the page is named for the prayer's number
 		return linkBase +  todaysVOVPrayerNumber + pageExtension;

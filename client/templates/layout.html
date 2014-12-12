@@ -1,0 +1,15 @@
+<template name="layout">
+	<H1><a href="/" class="headerTitle">Mark's Prayer App</a></H1>
+	<div class="todaysDate">
+		{{> todaysDate}}
+	</div>
+
+	<H2>Today's Verse</H2>
+	<div class="todaysVerse">
+		{{> todaysVerse}}
+	</div>
+
+	<div>{{> pageLinks}}</div>
+
+	{{> yield}} 
+</template>
