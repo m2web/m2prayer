@@ -1,4 +1,5 @@
 <template name="prayerRequests">
+<H2>Today's Prayer Requests</h2>
 <table>
 	{{#each prayerRequests}}
 	<tr>
@@ -7,4 +8,15 @@
 	</tr>
 	{{/each}}
 </table>
+<!--
+<div class="prayerTimer">
+	Prayer Time Remaining: <span id="time">0:00</span>
+	<input type="button" id="resetButton" value="Reset"/>
+	<input type="button" id="pauseButton" value="Pause" >
+	<input type="button" id="restartButton" value="Restart" >
+</div> 
+-->
+{{timeLeftToPray}}
+
+{{todaysPsalm}}
 </template>
