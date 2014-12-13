@@ -36,25 +36,34 @@ Template.prayerRequests.helpers({
 		return PrayerRequests.find({'categoryNumber': {$gte: categoryStart, $lte: categoryEnd-1}}, {sort: {'category': 1}});
 	},
 	timeLeftToPray: function() {
-		returnedTime = Session.get("dateval");
-		var m = Math.floor(returnedTime % 3600 / 60);
-		var s = Math.floor(returnedTime % 3600 % 60);
-		return ((m > 0 ? (m < 10 ? "0" : "") + m + ":" : "0:") + (s < 10 ? "0" : "") + s);
+		if(Session.get("dateval")){
+			var returnedTime = Session.get("dateval");
+			var m = Math.floor(returnedTime % 3600 / 60);
+			var s = Math.floor(returnedTime % 3600 % 60);
+			return ((m > 0 ? (m < 10 ? "0" : "") + m + ":" : "0:") + (s < 10 ? "0" : "") + s);
+		}else{
+			return "00:00";
+		}
 	}
 });
 
-/*
+//prayer timer code
+var minutes = 20;//average prayer time
+var timeLeft = minutes * 60; //number of seconds
+var timeIntervalId;//Id of the interval
 Template.prayerRequests.events({
-  'click .pause': function(e) {
+  'click .startTimer': function(e) {
+	//since the time interval is set, get the id to use to stop the timer
+	timeIntervalId = Meteor.setInterval( function () {
+		if(timeLeft > 0){
+			Session.set("dateval", timeLeft);
+		}
+		timeLeft--;
+	}, 1000 );
+  },
+  'click .stopTimer': function(e) {
+	  //the timeIntervalId was set in the click event above,
+	  //use it to stop the interval
 	  Meteor.clearInterval( timeIntervalId);
   }
 });
-*/
-var minutes = 20;
-var timeLeft = minutes * 60;
-var timeIntervalId = Meteor.setInterval( function () {
-	if(timeLeft > 0){
-		Session.set("dateval", timeLeft);
-	}
-	timeLeft--;
-}, 1000 );
