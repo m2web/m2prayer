@@ -2,6 +2,7 @@ Meteor.subscribe('prayerRequests');
 
 Template.prayerRequests.helpers({
 	prayerRequests: function() {
+		
 		var todaysDate = new Date();
 		//adding 1 as 0 does not act as a good divisor or multiplicand (Sunday = 0)
 		var weekDayNumber = todaysDate.getDay() + 1;
@@ -34,51 +35,26 @@ Template.prayerRequests.helpers({
 		
 		return PrayerRequests.find({'categoryNumber': {$gte: categoryStart, $lte: categoryEnd-1}}, {sort: {'category': 1}});
 	},
-	todaysPsalm: function() {
-		var todaysDate = new Date();
-		//adding 1 as 0 does not act as a good divisor or multiplicand (Sunday = 0)
-		var monthDayNumber = todaysDate.getDate();
-		
-		//if the 31st then set a random day
-		if (monthDayNumber > 30) {
-			//given that there are 150 Psalms, max day is 30
-			monthDayNumber = Math.floor(Math.random() * (30 - 1 +1) ) + 1;
-		}
-
-		var daysLastChapterNumber = monthDayNumber * 5;
-		var daysFirstChapterNumber = daysLastChapterNumber - 4;
-
-		var psalmNumber = Math.floor(Math.random() * (30 - 1 +1) ) + 1;	
-		//console.log(psalmNumber);
-		
-		//<%= getE;VPassage("Psalm " + @thePsalmChapter.to_s).html_safe %>
-		return "testing ";//Meteor.call('getVerseMethod',"Psalm " + psalmNumber);
-	},
 	timeLeftToPray: function() {
-	var clock = 20;
-		var timeLeft = function(x){
-			if(clock > 0){
-				clock--;
-				Session.set('time', clock);
-				console.log(clock);
-			}else{
-				Meteor.clearInterval(interval);
-			}
-			var interval = Meteor.setInterval(timeLeft, 1000);
-			return Session.get('time');
-		}
-		return 
+		returnedTime = Session.get("dateval");
+		var m = Math.floor(returnedTime % 3600 / 60);
+		var s = Math.floor(returnedTime % 3600 % 60);
+		return ((m > 0 ? (m < 10 ? "0" : "") + m + ":" : "0:") + (s < 10 ? "0" : "") + s);
 	}
 });
+
 /*
-//functions in lib/prayerTimer.js
-Template.prayerRequests.rendered = function(){
-//on load run reset to start Countdown function
-	window.onload = function(){
-		resetCountdown();
-		document.getElementById("restartButton").onclick = restartCountdown;	
-		document.getElementById("resetButton").onclick = resetCountdown;
-		document.getElementById("pauseButton").onclick = pauseCountdown;
-	}
-};
+Template.prayerRequests.events({
+  'click .pause': function(e) {
+	  Meteor.clearInterval( timeIntervalId);
+  }
+});
 */
+var minutes = 20;
+var timeLeft = minutes * 60;
+var timeIntervalId = Meteor.setInterval( function () {
+	if(timeLeft > 0){
+		Session.set("dateval", timeLeft);
+	}
+	timeLeft--;
+}, 1000 );

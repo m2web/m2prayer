@@ -6,16 +6,12 @@
 	background-color:#e1e1e1;
 }
 
+.prayerTime {
+		font-size: 22px;
+}
+
 tr:nth-child(odd){
 	background-color: LightGray;
-}
-
-.prayerTimer {
-		font-size: 16px;
-}
-
-#time {
-		 display: none;
 }
 
 /*Link Styling*/

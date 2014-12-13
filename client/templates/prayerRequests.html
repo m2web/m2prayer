@@ -1,22 +1,22 @@
 <template name="prayerRequests">
-<H2>Today's Prayer Requests</h2>
-<table>
-	{{#each prayerRequests}}
-	<tr>
-		<td>{{category}}</td>
-		<td>{{request}}</td>
-	</tr>
-	{{/each}}
-</table>
-<!--
-<div class="prayerTimer">
-	Prayer Time Remaining: <span id="time">0:00</span>
-	<input type="button" id="resetButton" value="Reset"/>
-	<input type="button" id="pauseButton" value="Pause" >
-	<input type="button" id="restartButton" value="Restart" >
-</div> 
--->
-{{timeLeftToPray}}
+	<H2>Today's Prayer Requests</h2>
+	<table>
+		{{#each prayerRequests}}
+		<tr>
+			<td>{{category}}</td>
+			<td>{{request}}</td>
+		</tr>
+		{{/each}}
+	</table>
 
-{{todaysPsalm}}
+	<div class="prayerTime">
+		Time to Pray: {{timeLeftToPray}}<br/>
+		<!--
+		<button type="button" class="pause">Pause</button><br/>
+		<button type="button" class="restart">Restart</button>
+		-->
+	</div> 
+
+	{{> todaysPsalm}}
+
 </template>
