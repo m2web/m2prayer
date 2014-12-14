@@ -1,6 +1,9 @@
 Meteor.subscribe('prayerRequests');
 
 Template.prayerRequests.helpers({
+	allPrayerRequests : function(){
+		return PrayerRequests.find();
+	},
 	prayerRequests: function() {
 		
 		var todaysDate = new Date();
@@ -44,16 +47,19 @@ Template.prayerRequests.helpers({
 		}else{
 			return "00:00";
 		}
+	},
+	selectedRequest : function(){
+		return Session.get("selectedRequest");
 	}
 });
 
 //prayer timer code
-var minutes = 1;//average prayer time
+var minutes = 20;//average prayer time
 var timeLeft = minutes * 60; //number of seconds
 var timeIntervalId;//Id of the interval
 Template.prayerRequests.events({
   'click .startTimer': function(e) {
-	//since the time interval is set, get the id to use to stop the timer
+	//get the id to use to stop the timer
 	timeIntervalId = Meteor.setInterval( function () {
 		if(timeLeft > -1){
 			Session.set("dateval", timeLeft);
@@ -64,15 +70,17 @@ Template.prayerRequests.events({
 	$('.stopTimer').show();
   },
   'click .stopTimer': function(e) {
-	  //the timeIntervalId was set in the click event above,
-	  //use it to stop the interval
-	  Session.set("dateval", timeLeft);
-	  Meteor.clearInterval( timeIntervalId);
-	  $('.stopTimer').hide();
-	  $('.restartTimer').show();
+	//the timeIntervalId was set in the click event above,
+	//use it to stop the interval
+	Session.set("dateval", timeLeft);
+	Meteor.clearInterval( timeIntervalId);
+	$('.stopTimer').hide();
+	$('.restartTimer').show();
   },
   'click .restartTimer': function(e) {
+	//get the current time
 	timeLeft = Session.get("dateval");
+	//recreate the time interval
 	timeIntervalId = Meteor.setInterval( function () {
 		if(timeLeft > -1){
 			Session.set("dateval", timeLeft);
@@ -81,11 +89,17 @@ Template.prayerRequests.events({
 	}, 1000 );
 	$('.restartTimer').hide();
 	$('.stopTimer').show();
-  }
+},
+'change  #categorySelect' : function (e,t) {
+	var categoryNumber = e.target.value;
+	console.log(categoryNumber);
+	Session.set("selectedRequest", PrayerRequests.find({"categoryNumber": categoryNumber}));
+}
 });
 
 //set intial template state
 Template.prayerRequests.rendered = function() {
 	$('.stopTimer').hide();
 	$('.restartTimer').hide();
-}
+};
+

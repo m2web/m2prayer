@@ -8,6 +8,19 @@
 		</tr>
 		{{/each}}
 	</table>
+	
+	<div>
+		<select id="categorySelect">
+			<option value="-1">Select a Category</option>
+			{{#each allPrayerRequests}}
+				<option value="{{categoryNumber}}">{{category}}</option>
+			{{/each}}
+		</select>
+	</div>
+	
+	<div>
+		{{selectedRequest}}
+	</div>
 
 	<div class="prayerTime">
 		Time to Pray: {{timeLeftToPray}}<br/>
