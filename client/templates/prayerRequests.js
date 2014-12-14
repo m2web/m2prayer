@@ -48,22 +48,44 @@ Template.prayerRequests.helpers({
 });
 
 //prayer timer code
-var minutes = 20;//average prayer time
+var minutes = 1;//average prayer time
 var timeLeft = minutes * 60; //number of seconds
 var timeIntervalId;//Id of the interval
 Template.prayerRequests.events({
   'click .startTimer': function(e) {
 	//since the time interval is set, get the id to use to stop the timer
 	timeIntervalId = Meteor.setInterval( function () {
-		if(timeLeft > 0){
+		if(timeLeft > -1){
 			Session.set("dateval", timeLeft);
 		}
 		timeLeft--;
 	}, 1000 );
+	$('.startTimer').hide();
+	$('.stopTimer').show();
   },
   'click .stopTimer': function(e) {
 	  //the timeIntervalId was set in the click event above,
 	  //use it to stop the interval
+	  Session.set("dateval", timeLeft);
 	  Meteor.clearInterval( timeIntervalId);
+	  $('.stopTimer').hide();
+	  $('.restartTimer').show();
+  },
+  'click .restartTimer': function(e) {
+	timeLeft = Session.get("dateval");
+	timeIntervalId = Meteor.setInterval( function () {
+		if(timeLeft > -1){
+			Session.set("dateval", timeLeft);
+		}
+		timeLeft--;
+	}, 1000 );
+	$('.restartTimer').hide();
+	$('.stopTimer').show();
   }
 });
+
+//set intial template state
+Template.prayerRequests.rendered = function() {
+	$('.stopTimer').hide();
+	$('.restartTimer').hide();
+}
