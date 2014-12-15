@@ -92,7 +92,7 @@ Template.prayerRequests.events({
 },
 'change  #categorySelect' : function (e,t) {
 	var categoryNumber = e.target.value;
-	console.log(categoryNumber);
+	//console.log(PrayerRequests.find({"categoryNumber": categoryNumber}));
 	Session.set("selectedRequest", PrayerRequests.find({"categoryNumber": categoryNumber}));
 }
 });
