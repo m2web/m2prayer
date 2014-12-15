@@ -1,14 +1,15 @@
 <template name="prayerRequests">
-	<H2>Today's Prayer Requests</h2>
-	<table>
-		{{#each prayerRequests}}
-		<tr>
-			<td>{{category}}</td>
-			<td>{{request}}</td>
-		</tr>
-		{{/each}}
-	</table>
-	
+	<div class="todaysRequests">
+		<H2>Today's Prayer Requests</h2>
+		<table>
+			{{#each prayerRequests}}
+			<tr>
+				<td>{{category}}</td>
+				<td>{{request}}</td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>
 	<div>
 		<select id="categorySelect">
 			<option value="-1">Select a Category</option>
@@ -18,8 +19,8 @@
 		</select>
 	</div>
 	
-	<div>
-		{{selectedRequest}}
+	<div class="selectedRequest">
+		{{selectedRequest.category}} : {{selectedRequest.request}}
 	</div>
 
 	<div class="prayerTime">

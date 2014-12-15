@@ -49,7 +49,9 @@ Template.prayerRequests.helpers({
 		}
 	},
 	selectedRequest : function(){
-		return Session.get("selectedRequest");
+		if(Session.get("selectedRequest")){
+			return PrayerRequests.findOne({'categoryNumber' : parseInt(Session.get("selectedRequest"))});
+		}
 	}
 });
 
@@ -92,8 +94,8 @@ Template.prayerRequests.events({
 },
 'change  #categorySelect' : function (e,t) {
 	var categoryNumber = e.target.value;
-	//console.log(PrayerRequests.find({"categoryNumber": categoryNumber}));
-	Session.set("selectedRequest", PrayerRequests.find({"categoryNumber": categoryNumber}));
+	$('.selectedRequest').show();
+	Session.set("selectedRequest", categoryNumber);
 }
 });
 
@@ -101,5 +103,6 @@ Template.prayerRequests.events({
 Template.prayerRequests.rendered = function() {
 	$('.stopTimer').hide();
 	$('.restartTimer').hide();
+	$('.selectedRequest').hide();
 };
 

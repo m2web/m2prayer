@@ -7,11 +7,23 @@
 }
 
 .prayerTime {
-		font-size: 22px;
+	font-size: 22px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 tr:nth-child(odd){
 	background-color: LightGray;
+}
+
+.selectedRequest {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.todaysRequests {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 /*Link Styling*/
