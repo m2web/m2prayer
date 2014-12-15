@@ -4,13 +4,13 @@
 		<table>
 			{{#each prayerRequests}}
 			<tr>
-				<td>{{category}}</td>
-				<td>{{request}}</td>
+				<td id="category">{{category}}</td>
+				<td id="request">{{request}}</td>
 			</tr>
 			{{/each}}
 		</table>
 	</div>
-	<div>
+	<div class="select-style">
 		<select id="categorySelect">
 			<option value="-1">Select a Category</option>
 			{{#each allPrayerRequests}}
@@ -20,14 +20,15 @@
 	</div>
 	
 	<div class="selectedRequest">
-		{{selectedRequest.category}} : {{selectedRequest.request}}
+		<div id="category">{{selectedRequest.category}}</div>
+		<div id= "request">{{selectedRequest.request}}</div>
 	</div>
 
 	<div class="prayerTime">
 		Time to Pray: {{timeLeftToPray}}<br/>
-		<button type="button" class="startTimer">Start</button>&nbsp;
-		<button type="button" class="restartTimer">Restart</button>&nbsp;
-		<button type="button" class="stopTimer">Stop</button><br/>
+		<button type="button" class="button startTimer">Start</button>
+		<button type="button" class="button restartTimer">Restart</button>
+		<button type="button" class="button stopTimer">Stop</button>
 	</div> 
 
 	{{> todaysPsalm}}

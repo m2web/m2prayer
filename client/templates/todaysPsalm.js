@@ -16,7 +16,7 @@ Template.todaysPsalm.helpers({
 		var daysFirstChapterNumber = daysLastChapterNumber - 4;
 
 		//var psalmNumber = Math.floor(Math.random() * (daysLastChapterNumber - daysFirstChapterNumber + daysFirstChapterNumber) ) + 1;	
-		psalmNumber = (Math.floor(Math.random() * (daysLastChapterNumber - daysFirstChapterNumber)) + daysFirstChapterNumber) ;
+		psalmNumber = Math.floor(Math.random() * daysLastChapterNumber - daysFirstChapterNumber) + daysFirstChapterNumber ;
 		
 		Meteor.call('getVerseMethod', 'Psalm ' + psalmNumber, function(err, response) {
 			//set the value in session

@@ -1,3 +1,7 @@
+body {
+		font-family: Arial;
+}
+
 .todaysDate {
 	font-size: 1.5em;
 }
@@ -24,30 +28,130 @@ tr:nth-child(odd){
 .todaysRequests {
 	padding-top: 10px;
 	padding-bottom: 10px;
+	font-size: 16px;
+}
+
+.todaysRequests  #category{
+	font-weight: bold;
+}
+
+.selectedRequest #request{
+	margin-left: 230px;
+	padding: 1em;
+	border: 1px solid gray;
+}
+
+.selectedRequest #category{
+	font-weight: bold;
+	float:left;
+	width: 200px;
+	margin: 0;
+	padding: 1em;
+	background-color: LightGray;
+}
+
+.memoryVerse {
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.memoryVerse .verseReference {
+	font-weight: bold;
+}
+
+/*button styling*/
+.button {
+	background-color: #CCC;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 6px;
+	color: #000;
+	font-size: 20px;
+	text-decoration: none;
+	cursor: poiner;
+	border: none;
+	padding: .25em;
+}
+
+.button:hover {
+	border: none;
+	background-color: #000;
+	color: #FFF;
+	box-shadow: 0px 0px 1px #777;
+}
+
+/*category select drop down style*/
+.select-style select {
+	font-size: 22px;
 }
 
 /*Link Styling*/
+.navLinks {
+	color: White;
+	font-size: 22px;
+	padding: .5em;
+	background-color: Black;
+}
+
 a:link{
-	color:black;
+	color: White;
 	text-decoration: none;
 }
 
 a:hover{
-	color:black;
+	color: White;
 	text-decoration: underline;
 }
 
 a:visited{
-	color:black;
+	color: White;
 	text-decoration: none;
 }
 
 a:active{
-	color:black;
+	color: White;
+	text-decoration: none;
+}
+
+/*Header link*/
+a:link.headerTitle{
+	color: Black;
 	text-decoration: none;
 }
 
 a:hover.headerTitle{
-	color:black;
+	color: Black;
+	text-decoration: none;
+}
+
+a:active.headerTitle{
+	color: Black;
+	text-decoration: none;
+}
+
+a:visited.headerTitle{
+	color: Black;
+	text-decoration: none;
+}
+
+/*Admin Links*/
+a:link.admin{
+	color: Black;
+	text-decoration: none;
+}
+
+a:hover.admin{
+	color: Black;
+	text-decoration: underline;
+}
+
+a:active.admin{
+	color: Black;
+	text-decoration: underline;
+}
+
+a:visited.admin{
+	color: Black;
 	text-decoration: none;
 }

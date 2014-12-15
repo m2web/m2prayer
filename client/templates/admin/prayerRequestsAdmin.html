@@ -1,0 +1,18 @@
+<template name="prayerRequestsAdmin">
+	<table class="requestsAdmin">
+		<tr>
+			<th>Category</th>
+			<th>Content</th>
+			<th></th>
+			<th></th>
+		</tr>
+		{{#each allPrayerRequests}}
+			<tr>
+				<td>{{category}}</td>
+				<td>{{request}}</td>
+				<td><a href="/requests/edit/{{_id}}" class="admin">Edit</a></td>
+				<td><a href="/requests/destroy/{{_id}}" onclick="return confirm('Are you sure?')" class="admin">Destroy</a></td>
+			</tr>
+		{{/each}}
+	</table>
+</template>

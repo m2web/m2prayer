@@ -22,7 +22,7 @@ Template.prayerRequests.helpers({
 		}else {
 			//get a random number for category end since the last days of the week will have the same requests
 			if (weekDayNumber > 5) { //if day greater than Thursday (+1 as 0 not good divisor or multiplicand)
-				categoryEnd = Math.floor(Math.random() * (requestCount - 1 + 1) ) + 1;
+				categoryEnd = Math.floor(Math.random() * (requestCount - 1)) + 1;
 				//check that categoryEnd is at least 4 so wse have 4 categories for which to pray. 
 				//this is because the categoryEnd might be 2 then the result is only 2 categories.
 				if(categoryEnd < 4){
@@ -94,8 +94,10 @@ Template.prayerRequests.events({
 },
 'change  #categorySelect' : function (e,t) {
 	var categoryNumber = e.target.value;
-	$('.selectedRequest').show();
-	Session.set("selectedRequest", categoryNumber);
+	if(parseInt(categoryNumber) > -1){
+		$('.selectedRequest').show();
+		Session.set("selectedRequest", categoryNumber);
+	}
 }
 });
 
