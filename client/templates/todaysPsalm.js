@@ -11,12 +11,14 @@ Template.todaysPsalm.helpers({
 			//given that there are 150 Psalms, max day is 30
 			monthDayNumber = Math.floor(Math.random() * (30 - 1) ) + 1;
 		}
-
+		
 		var daysLastChapterNumber = monthDayNumber * 5;
 		var daysFirstChapterNumber = daysLastChapterNumber - 4;
+		//console.log("daysLastChapterNumber: " + daysLastChapterNumber);
+		//console.log("daysFirstChapterNumber: " + daysFirstChapterNumber);
 
-		//var psalmNumber = Math.floor(Math.random() * (daysLastChapterNumber - daysFirstChapterNumber + daysFirstChapterNumber) ) + 1;	
-		psalmNumber = Math.floor(Math.random() * daysLastChapterNumber - daysFirstChapterNumber) + daysFirstChapterNumber ;
+		//psalmNumber = (daysLastChapterNumber + daysFirstChapterNumber) /2;
+		psalmNumber = Math.floor(Math.random() * (daysLastChapterNumber - daysFirstChapterNumber) + daysFirstChapterNumber);
 		
 		Meteor.call('getVerseMethod', 'Psalm ' + psalmNumber, function(err, response) {
 			//set the value in session
@@ -24,7 +26,7 @@ Template.todaysPsalm.helpers({
 		});
 		//get the value out of session that was set in session above
 		thePsalmOutput = Session.get('thePsalm');
-		//content is the key of the verse text in the JSON document
+		
 		return thePsalmOutput['content'];
 	}
 });
