@@ -1,0 +1,23 @@
+<template name="memoryVersesAdmin">
+<div class="addItem"><a href="/verses/add" class="addItemLink">Create New Verse</a></div>
+	<table class="versesAdmin">
+		<tr>
+			<th>Month</th>
+			<th>Year</th>
+			<th>Reference</th>
+			<th>Text</th>
+			<th></th>
+			<th></th>
+		</tr>
+		{{#each allMemoryVerses}}
+			<tr>
+				<td>{{month}}</td>
+				<td>{{year}}</td>
+				<td>{{reference}}</td>
+				<td>{{text}}</td>
+				<td><a href="/verses/edit/{{_id}}" class="admin">Edit</a></td>
+				<td><a href="/verses/destroy/{{_id}}" onclick="return confirm('Are you sure?')" class="admin">Destroy</a></td>
+			</tr>
+		{{/each}}
+	</table>
+</template>

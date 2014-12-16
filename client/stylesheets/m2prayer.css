@@ -155,3 +155,32 @@ a:visited.admin{
 	color: Black;
 	text-decoration: none;
 }
+
+.addItem {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.addItemLink {
+	font-size: 22px;
+}
+
+a:link.addItemLink{
+	color: Black;
+	text-decoration: none;
+}
+
+a:hover.addItemLink{
+	color: Black;
+	text-decoration: underline;
+}
+
+a:active.addItemLink{
+	color: Black;
+	text-decoration: underline;
+}
+
+a:visited.addItemLink{
+	color: Black;
+	text-decoration: none;
+}

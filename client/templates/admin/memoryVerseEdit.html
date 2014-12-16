@@ -1,0 +1,19 @@
+<template name="memoryVerseEdit">
+<form>
+	<table class="versesAdmin">
+		<tr>
+			<th>Month</th>
+			<th>Reference</th>
+			<th>Year</th>
+			<th>Text</th>
+		</tr>
+			<tr>
+				<td style="vertical-align: top"><input type="text" name="month" value="{{editVerse.month}}"></td>
+				<td style="vertical-align: top"><input type="text" name="reference" value="{{editVerse.reference}}"></td>
+				<td style="vertical-align: top"><input type="text" name="year" value="{{editVerse.year}}"></td>
+				<td><textarea rows="4" cols="100" name="text">{{editVerse.text}}</textarea></td>
+			</tr>
+	</table>
+	<input type="submit" value="Submit" />
+</form>
+</template>
