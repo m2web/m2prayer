@@ -11,15 +11,15 @@ Template.todaysPsalm.helpers({
 			//given that there are 150 Psalms, max day is 30
 			monthDayNumber = Math.floor(Math.random() * (30 - 1) ) + 1;
 		}
-		
+		//get the last chapter in today's range
 		var daysLastChapterNumber = monthDayNumber * 5;
+		//get the first chapter in today's range
 		var daysFirstChapterNumber = daysLastChapterNumber - 4;
-		//console.log("daysLastChapterNumber: " + daysLastChapterNumber);
-		//console.log("daysFirstChapterNumber: " + daysFirstChapterNumber);
 
-		//psalmNumber = (daysLastChapterNumber + daysFirstChapterNumber) /2;
+		//get the random Psalm chapter number
 		psalmNumber = Math.floor(Math.random() * (daysLastChapterNumber - daysFirstChapterNumber) + daysFirstChapterNumber);
 		
+		//call the ESV REST service to fetch the passage
 		Meteor.call('getVerseMethod', 'Psalm ' + psalmNumber, function(err, response) {
 			//set the value in session
 			Session.set('thePsalm', response);
