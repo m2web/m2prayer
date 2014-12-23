@@ -60,6 +60,10 @@ tr:nth-child(odd){
 	font-weight: bold;
 }
 
+.todaysWestminsterCatechismQA {
+	font-size: 18px;
+}
+
 /*button styling*/
 .button {
 	background-color: #CCC;
