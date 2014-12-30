@@ -64,6 +64,10 @@ tr:nth-child(odd){
 	font-size: 18px;
 }
 
+.todaysPsalm {
+	padding-bottom: 30px;
+}
+
 /*button styling*/
 .button {
 	background-color: #CCC;
