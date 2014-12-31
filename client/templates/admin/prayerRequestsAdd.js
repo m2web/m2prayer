@@ -6,7 +6,6 @@ Template.prayerRequestsAdd.events({
 		var newCategoryNumberCursor = PrayerRequests.find({}, {sort: {categoryNumber: -1}, limit: 1});
 		var newCategoryNumber = 0;
 		newCategoryNumberCursor.forEach(function (request){
-			console.log(request.categoryNumber);
 			newCategoryNumber = request.categoryNumber + 1;
 		});
 		

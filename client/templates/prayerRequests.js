@@ -1,5 +1,9 @@
 Meteor.subscribe('prayerRequests');
 
+//this is used in the todaysPsalm.js file to call the ESV API Rest service once for the day's 
+//Psalm. Otherwise, it continues to call it several times.
+Session.set("psalmNotSet", true);
+
 Template.prayerRequests.helpers({
 	allPrayerRequests : function(){
 		return PrayerRequests.find();

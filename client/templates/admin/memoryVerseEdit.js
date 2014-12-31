@@ -1,6 +1,5 @@
 Template.memoryVerseEdit.helpers({
 	editVerse : function(){
-		console.log(Session.get('currentVerseEditId'));
 		return MemoryVerses.findOne(Session.get('currentVerseEditId'));
 	}
 });

@@ -18,7 +18,7 @@ Template.todaysWestMinsterCatechism.helpers({
 	}else if (todaysWestminsterCatechismNumber > numberOfQuestionsX3) {
 		todaysWestminsterCatechismNumber = Math.floor(Math.random() * (numberOfQuestions - 1)) + 1;
 	}	  
-	console.log(todaysWestminsterCatechismNumber);
+	
 	return WestminsterCatechisms.find({'number': todaysWestminsterCatechismNumber.toString()});
   }
 });

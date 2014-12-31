@@ -20,10 +20,18 @@ Template.todaysPsalm.helpers({
 		psalmNumber = Math.floor(Math.random() * (daysLastChapterNumber - daysFirstChapterNumber) + daysFirstChapterNumber);
 		
 		//call the ESV REST service to fetch the passage
-		Meteor.call('getVerseMethod', 'Psalm ' + psalmNumber, function(err, response) {
-			//set the value in session
-			Session.set('thePsalm', response);
-		});
+		//this session variable is set in the prayerRequest.js file and is used to call the 
+		//ESV API Rest service once for the day's Psalm. Otherwise, it continues to call it several times.
+		if(Session.get("psalmNotSet")){
+			Meteor.call('getVerseMethod', 'Psalm ' + psalmNumber, function(err, response) {
+				//set the value in session
+				Session.set("thePsalm", response);
+			});
+		}
+	
+		//make sure this is set to false here so the call is not made again in the session
+		Session.set('psalmNotSet', false);
+
 		//get the value out of session that was set in session above
 		thePsalmOutput = Session.get('thePsalm');
 		
