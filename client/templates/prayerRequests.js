@@ -74,7 +74,12 @@ Template.prayerRequests.events({
   'click .stopTimer': function(e) {
 	//the timeIntervalId was set in the click event above,
 	//use it to stop the interval
-	Session.set("dateval", timeLeft);
+	if(timeLeft > -1){
+		Session.set("dateval", timeLeft);
+	}else{
+		timeLeft = minutes * 60;
+	}
+	
 	Meteor.clearInterval( timeIntervalId);
 	$('.stopTimer').hide();
 	$('.restartTimer').show();
@@ -82,10 +87,20 @@ Template.prayerRequests.events({
   'click .restartTimer': function(e) {
 	//get the current time
 	timeLeft = Session.get("dateval");
+	  
+	//to check if reset of timer has happened
+	var hasRest = false;
+	  
 	//recreate the time interval
 	timeIntervalId = Meteor.setInterval( function () {
 		if(timeLeft > -1){
 			Session.set("dateval", timeLeft);
+		}else{
+			if(!hasRest){
+				timeLeft = minutes * 60;
+				Session.set("dateval", timeLeft);
+				hasRest = true;
+			}
 		}
 		timeLeft--;
 	}, 1000 );
