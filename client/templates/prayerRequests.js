@@ -4,6 +4,10 @@ Meteor.subscribe('prayerRequests');
 //Psalm. Otherwise, it continues to call it several times.
 Session.set("psalmNotSet", true);
 
+//this is used in the todaysVerse.js file to call the ESV API Rest service once for the day's 
+//verse. Otherwise, it continues to call it several times.
+Session.set("todaysVerseNotSet", true);
+
 Template.prayerRequests.helpers({
 	allPrayerRequests : function(){
 		return PrayerRequests.find();
