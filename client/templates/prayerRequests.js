@@ -33,14 +33,14 @@ Template.prayerRequests.helpers({
 					categoryEnd = 4;
 				}
 			}else {//it is Monday - Thursday
-				categoryEnd = requestsCount;
+				categoryEnd = requestCount;
 			}
 		}
 	
 		//determine the first category to pray about that day
 		var categoryStart = categoryEnd - categoriesPerDay;
-		
-		return PrayerRequests.find({'categoryNumber': {$gte: categoryStart, $lte: categoryEnd-1}}, {sort: {'category': 1}});
+
+		return PrayerRequests.find({'categoryNumber': {$gte: categoryStart, $lte: categoryEnd}}, {sort: {'category': 1}});
 	},
 	timeLeftToPray: function() {
 		if(Session.get("dateval")){
