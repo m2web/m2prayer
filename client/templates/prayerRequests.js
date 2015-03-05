@@ -63,8 +63,8 @@ Template.prayerRequests.helpers({
 	},
 	thisMonthsMemoryVerse: function() {
 		var todaysDate = new Date();
-		//The first month is not until February which is month 2 so we add 2.
-		var thisMonth = todaysDate.getMonth() + 2;
+		//The first month is not until February which is month 2 so we add 1.
+		var thisMonth = todaysDate.getMonth() + 1;
 		//theYear is used to determine if the Joshua's Men group is using Grudem or the books. 
 		var theYear = todaysDate.getFullYear();
 		//even year (ex. 2014 and 2016) is using Grudem's. This is used in the query below

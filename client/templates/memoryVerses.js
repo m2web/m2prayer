@@ -7,7 +7,7 @@ Template.memoryVerses.helpers({
 		//is the month, then verses up to and including April will be shown
 		//Also, since the last month for meeting to memorize scripture for Joshua's Men is November and the getMonth 
 		//returns a 0 - 11 number, we do not need to include December (or 12) and therefore do not need to add 1.
-		//However, the first month is not until February which is month 2 so we add 2.
+		//However, the first month is not until February which is month 2 so we add 2 to get this and next month's verses.
 		var lastMonth = todaysDate.getMonth() + 2;
 		//theYear is used to determine if the Joshua's Men group is using Grudem or the books. 
 		var theYear = todaysDate.getFullYear();
