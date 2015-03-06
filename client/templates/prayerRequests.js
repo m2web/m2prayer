@@ -10,7 +10,7 @@ Session.set("todaysVerseNotSet", true);
 
 Template.prayerRequests.helpers({
 	allPrayerRequests : function(){
-		return PrayerRequests.find();
+		return PrayerRequests.find({},{sort: {'category': 1}});
 	},
 	prayerRequests: function() {
 		
