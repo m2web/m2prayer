@@ -17,6 +17,7 @@ Template.prayerRequests.helpers({
 		var todaysDate = new Date();
 		//adding 1 as 0 does not act as a good divisor or multiplicand (Sunday = 0)
 		var weekDayNumber = todaysDate.getDay() + 1;
+		
 		//return PrayerRequests.find({"category":"Church Staff"});
 		var allRequests = PrayerRequests.find({}, {sort: {'category': 1}});
 		var requestCount = allRequests.count() + 1;
@@ -28,17 +29,19 @@ Template.prayerRequests.helpers({
 		if (weekDayNumber * categoriesPerDay <= requestCount ) {
 			categoryEnd = weekDayNumber * categoriesPerDay
 		}else {
+			//*************** Set the random prayer list days here *******************
 			//get a random number for category end since the last days of the week will have the same requests
-			if (weekDayNumber > 5) { //if day greater than Thursday (+1 as 0 not good divisor or multiplicand)
+			if (weekDayNumber > 4) { //if day is Thursday thru Saturday (+1 as 0 not good divisor or multiplicand)
 				categoryEnd = Math.floor(Math.random() * (requestCount - 1)) + 1;
 				//check that categoryEnd is at least 4 so wse have 4 categories for which to pray. 
 				//this is because the categoryEnd might be 2 then the result is only 2 categories.
 				if(categoryEnd < 4){
 					categoryEnd = 4;
 				}
-			}else {//it is Monday - Thursday
+			}else {//it is Monday - Wednesday
 				categoryEnd = requestCount;
 			}
+			//*************** End random prayer list days setting here ****************
 		}
 	
 		//determine the first category to pray about that day
