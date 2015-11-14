@@ -1,7 +1,7 @@
 Template.todaysVerse.helpers({
   theVerse: function() {
 	//put something in the returned value to show
-	var todaysVerseOutput = "There was a problem getting the verse."
+	// var todaysVerseOutput = "There was a problem getting the verse."
 	
 	//this session variable is set in the prayerRequest.js file and is used to call the 
 	//ESV API Rest service once for the day's verse. Otherwise, it continues to call it several times.
@@ -16,7 +16,13 @@ Template.todaysVerse.helpers({
 		});
 	}
 	//get the value out of session that was set in session above
-	todaysVerseOutput = Session.get('todaysMemoryVerse');
+	var todaysVerseOutput = Session.get('todaysMemoryVerse');
+	
+	//if not populated then set as empty string
+	if(todaysVerseOutput){
+		todaysVerseOutput = {content : ""};
+	}
+	
 	//content is the key of the verse text in the JSON document
 	return todaysVerseOutput['content'];
   }
