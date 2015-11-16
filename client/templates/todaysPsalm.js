@@ -2,6 +2,7 @@ Template.todaysPsalm.helpers({
 	todaysPsalm: function() {
 		var todaysDate = new Date();
 		var psalmNumber = 1;
+		var thePsalmOutput = "There was an error getting the Psalm chapter.";
 		
 		//adding 1 as 0 does not act as a good divisor or multiplicand (Sunday = 0)
 		var monthDayNumber = todaysDate.getDate();
@@ -33,12 +34,7 @@ Template.todaysPsalm.helpers({
 		Session.set('psalmNotSet', false);
 
 		//get the value out of session that was set in session above
-		var thePsalmOutput = Session.get('thePsalm');
-		
-		//if not populated then set as empty string
-		if(thePsalmOutput){
-			thePsalmOutput.content = "";
-		}
+		thePsalmOutput = Session.get('thePsalm');
 		
 		return thePsalmOutput['content'];
 	}
