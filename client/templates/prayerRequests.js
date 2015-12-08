@@ -68,12 +68,22 @@ Template.prayerRequests.helpers({
 		var todaysDate = new Date();
 		//The first month is not until February which is month 2 so we add 1.
 		var thisMonth = todaysDate.getMonth() + 1;
+		
+		var isDecember = (thisMonth === 12);
+		
 		//lets get next month's number as the JM meeting may be early or mid month and having next month's verse ready for study is good
 		var nextMonth = thisMonth + 1;
 		//theYear is used to determine if the Joshua's Men group is using Grudem or the books.
 		var theYear = todaysDate.getFullYear();
 		//even year (ex. 2014 and 2016) is using Grudem's. This is used in the query below
 		var bookYear = (theYear % 2 == 0) ? "GRUDEM":"BOOKS";
+		
+		if(isDecember){
+			//the next verse(s) are in February of the next year
+			thisMonth = 2;//for February
+			nextMonth = 2;
+			bookYear = (theYear % 2 == 0) ? "BOOKS":"GRUDEM";//the opposite for current year
+		}
 		
 		//we are using the year ('GRUDEM' or 'BOOKS') and the month number.
 		//return MemoryVerses.find({'year': bookYear, 'month': thisMonth});
