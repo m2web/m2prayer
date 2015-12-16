@@ -1,0 +1,35 @@
+*How to backup remote meteor mongdb from 
+$ cd yourapp 
+$ meteor login
+$ meteor mongo yourapp.meteor.com --url
+
+You'll get something like:
+
+mongodb://client-a19e7942:13a03e0d-118e-c0e5-f6ae-1ddebcd7f282@production-db-d2.meteor.io:27017/m2prayer_meteor_com
+(This link expires in 1 minute, so hurry up!)
+
+$ mongodump -h production-db-d2.meteor.io --port 27017 --username client-a19e7942 --password 13a03e0d-118e-c0e5-f6ae-1ddebcd7f282 -d m2prayer_meteor_com
+
+This backup the entire remote database into a default dump/ folder.
+---	
+If ever you need to import the db into local meteor mongo DB, start a mongo shell:
+
+$ meteor mongo
+MongoDB shell version: 2.4.9
+connecting to: 127.0.0.1:3001/meteor
+
+and in another terminal use mongorestore command
+
+$ mongorestore --port 3001
+---
+To restore to the production meteor.com:
+$ cd yourapp 
+$ meteor login
+$ meteor mongo yourapp.meteor.com --url
+
+You'll get something like:
+
+mongodb://client-a19e7942:13a03e0d-118e-c0e5-f6ae-1ddebcd7f282@production-db-d2.meteor.io:27017/m2prayer_meteor_com
+(This link expires in 1 minute, so hurry up!)
+
+$ mongorestore -u client-a19e7942 -p 13a03e0d-118e-c0e5-f6ae-1ddebcd7f282 -h production-db-d2.meteor.io:27017 -db m2prayer_meteor_com /home/YourMeteorAppDir/dump/m2prayer_meteor_com
