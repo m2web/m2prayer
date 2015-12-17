@@ -13,6 +13,10 @@ $ mongodump -h production-db-d2.meteor.io --port 27017 --username client-a19e794
 This backup the entire remote database into a default dump/ folder.
 ---	
 If ever you need to import the db into local meteor mongo DB, start a mongo shell:
+-
+To clear current local mongodb data:
+$ meteor reset
+Comment the /server/fixture.js file content to keep from writing to mongo from the file.
 
 $ meteor mongo
 MongoDB shell version: 2.4.9
@@ -20,7 +24,7 @@ connecting to: 127.0.0.1:3001/meteor
 
 and in another terminal use mongorestore command
 
-$ mongorestore --port 3001
+$ mongorestore -h 127.0.0.1 --port 3001 -d meteor dump/m2prayer_meteor_com
 ---
 To restore to the production meteor.com:
 $ cd yourapp 
