@@ -1,0 +1,9 @@
+With the local meteor app running, open a new command prompt and from the app directory issue the following:
+mongoexport --port=3001 -d meteor -c collectionNameHere --out fileToBeSavedHere.json
+
+For example, for my prayer app data I did the following:
+mongoexport --port=3001 -d meteor -c memoryVerses --out dump/JM_Verses.json
+
+mongoexport --port=3001 -d meteor -c catechisms --out dump/westminsterCatQA.json
+
+mongoexport --port=3001 -d meteor -c catechisms --out dump/westminsterCatQA.json
